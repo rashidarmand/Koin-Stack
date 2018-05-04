@@ -1,0 +1,7 @@
+<h1>Sorry, No results found</h1>
+
+<%# Link to actual hashtag value through posttags %>
+PostTag.all.each{|t| p t.tag.tag}
+
+<%# Check if tag exists %>
+Tag.all.exists?(:tag => '#hashtags')

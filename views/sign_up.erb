@@ -1,0 +1,13 @@
+
+<h1>Sign Up</h1>
+
+<form action="/sign-up" method="post">
+  <input type="text" name="first_name" id="first_name" placeholder="First Name">
+  <input type="text" name="last_name" id="last_name" placeholder="Last Name">
+  <input type="email" name="email" id="email" placeholder="Email">
+  <input type="date" name="birthday" id="birthday" placeholder="Birthday">
+  <input type="text" name="display_name" id="display_name" placeholder="Display Name" pattern="(\w|\d){2,20}" title="Between 2-20 characters no spaces or special characters" required>
+  <input type="text" name="username" id="username" placeholder="Username">
+  <input type="password" name="password" id="password" placeholder="Password">
+  <input type="submit" value="Go">
+</form>
