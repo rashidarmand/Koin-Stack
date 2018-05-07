@@ -4,8 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <link rel="stylesheet" type="text/css" href="<%= url("/app.css")%>">
+  <title>Koin Stack</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <link rel="stylesheet" type="text/css" href="<%= url("css/app.css")%>">
   <%# <link rel="stylesheet" href="app.css"> %>
 </head>
 <body>
@@ -35,14 +38,101 @@
     <a href="/" />Home</a>
     <a href="/sign-in" />Sign In</a>
     <a href="/sign-up" />Sign Up</a>
+    <a href="/users" />Users</a>
     <a href="/feed" />Feed</a>
   
+
+<%# Test %>
+
+  <%# <ul id="nav-mobile" class="sidenav sidenav-fixed">
+    <li class="search">
+      <div class="search-wrapper">
+        <form action="/search" method="post">
+          <input type="search" name="search" id="search" placeholder="E.G. 'sause' or '#hello' ">
+          <i class="material-icons left">search</i>
+          <input type="submit" value="Go">
+        </form>
+        <%# <input id="search" placeholder="Search"><i class="material-icons left">search</i> %>
+        <%# <div class="search-results"></div>
+      </div>
+    </li>
+    <li><a class="green-text text-darken-4" href="/cookies">Cookies</a></li>
+    <li><a class="green-text text-darken-4" href="/cakes">Cakes</a></li>
+    <li><a class="green-text text-darken-4" href="/muffins">Muffins</a></li>
+    <li><a class="green-text text-darken-4" href="/newsletter">Newsletter</a></li>
+  </ul> %> 
+
+<div class="container"><a href="#" data-target="nav-mobile" class="top-nav sidenav-trigger full hide-on-large-only right"><i class="material-icons">menu</i></a></div>
+      <ul id="nav-mobile" class="sidenav sidenav-fixed">
+        <li class="logo"><a id="logo-container" href="/" class="brand-logo">
+          <a href="/"> <img src="images/full_logo_tp.png" class="brand-logo" id="logo" alt="" srcset=""> </a>
+          <ul id="version-dropdown" class="dropdown-content">
+            <li><a>1.0.0-rc.1</a></li>
+            <li><a href="http://archives.materializecss.com/0.100.2/">0.100.2</a></li>
+          </ul>
+        </li>
+        <li class="search">
+          <div class="search-wrapper">
+            <input id="search" placeholder="Search"><i class="material-icons">search</i>
+            <div class="search-results"></div>
+          </div>
+        </li>
+        <li class="bold"><a href="about.html" class="waves-effect waves-teal">About</a></li>
+        <li class="bold"><a href="getting-started.html" class="waves-effect waves-teal">Getting Started</a></li>
+        <li class="no-padding">
+        <li class="bold"><a href="mobile.html" class="waves-effect waves-teal">Mobile</a></li>
+        <li class="bold"><a href="showcase.html" class="waves-effect waves-teal">Showcase</a></li>
+        <li class="bold"><a href="themes.html" class="waves-effect waves-teal">Themes</a></li>
+      </ul>
+
+
+
+
+      <%# <div class="container"><a href="#" data-target="nav-mobile" class="top-nav sidenav-trigger full hide-on-large-only"><i class="material-icons">menu</i></a></div>
+      <ul id="nav-mobile" class="sidenav sidenav-fixed">
+        <li class="logo"><a id="logo-container" href="/" class="brand-logo">
+            <object id="front-page-logo" type="image/svg+xml" data="res/materialize.svg">Your browser does not support SVG</object></a></li>
+        <li class="version"><a href="#" data-target="version-dropdown" class="dropdown-trigger">
+            1.0.0-rc.1
+            <svg class="caret" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></a>
+          <ul id="version-dropdown" class="dropdown-content">
+            <li><a>1.0.0-rc.1</a></li>
+            <li><a href="http://archives.materializecss.com/0.100.2/">0.100.2</a></li>
+          </ul>
+        </li>
+        <li class="search">
+          <div class="search-wrapper">
+            <input id="search" placeholder="Search"><i class="material-icons">search</i>
+            <div class="search-results"></div>
+          </div>
+        </li>
+        <li class="bold"><a href="about.html" class="waves-effect waves-teal">About</a></li>
+        <li class="bold"><a href="getting-started.html" class="waves-effect waves-teal">Getting Started</a></li>
+        <li class="no-padding"> </li> %>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <% end %>
   </ul>
 
   <%= yield %>
 
-  <script src="<%= url("/app.js")%>" type="text/javascript"></script>
+  <!--JavaScript at end of body for optimized loading-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <script src="<%= url("js/app.js")%>" type="text/javascript"></script>
   <%# <script src="app.js" type="text/javascript"></script> %>
 </body>
 </html>

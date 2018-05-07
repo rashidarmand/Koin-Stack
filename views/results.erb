@@ -24,14 +24,19 @@
 <% for tag in @tags
     # if @user.profile.posts.index(post) % 2 == 0
  %>
-  <a href="/post/<%= tag.id %>">
+<p>
+  <a class="post" href="/post/<%= tag.id %>">
   <ul>
     <li> <a href= "/profile/<%= tag.profile.display_name %>"> @<%= tag.profile.display_name %> </a> </li>
     <li> <%= tag.title %> </li>
     <li><pre><%= tag.content %></pre></li>
     <li> <%= tag.created_at.localtime.strftime("posted by @#{tag.profile.display_name} at %I:%M:%p on %-m/%-d/%y") %> </li>
+    <% if tag.updated_at != tag.created_at %>
+    <li> <%= tag.updated_at.localtime.strftime("* updated at %I:%M:%p on %-m/%-d/%y") %> </li>
+    <% end %>
   </ul>
   </a>
+</p>
   <br>
 
 <%# <% else %>
