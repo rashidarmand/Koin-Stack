@@ -1,0 +1,10 @@
+<h1>Edit Post</h1>
+
+<form action="/edit_post/<%= @post.id %>" method="post">
+  <input type="file" name="image" placeholder="Image" value="<%= @post.image %>" multiple>
+  <input type="text" name="title" id="title" placeholder="Title" value="<%= @post.title %>">
+  <%# <input type="file" name="video" placeholder="Video"multiple> %>
+  <textarea type="text" name="content" id="password" placeholder="Post" cols="30" rows="10" required><%= @post.content %></textarea>
+  <%# <input type="text" name="title" id="title" placeholder="Title"> %>
+  <input type="submit" value="Go">
+</form>

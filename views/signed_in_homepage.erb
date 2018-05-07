@@ -1,6 +1,6 @@
 <h1>Thank you for signing in</h1>
 
-Welcome to the website <%= @user.profile.display_name %>! Kick your shoes off, stay a while!
+Welcome to Koin Stack <%= @user.profile.display_name %>! Kick your shoes off, stay a while!
 
 <form action="/search" method="post">
 <input type="search" name="search" id="search" placeholder="E.G. 'sause' or '#hello' ">
@@ -14,9 +14,13 @@ Welcome to the website <%= @user.profile.display_name %>! Kick your shoes off, s
   <input type="text" name="title" id="title" placeholder="Title">
   <%# <input type="file" name="video" placeholder="Video"multiple> %>
   <textarea type="text" name="content" id="password" placeholder="Post" cols="30" rows="10" required></textarea>
-  <input type="text" name="title" id="title" placeholder="Title">
+  <%# <input type="text" name="title" id="title" placeholder="Title"> %>
   <input type="submit" value="Go">
 </form>
+
+<br>
+<br>
+
 
 
 

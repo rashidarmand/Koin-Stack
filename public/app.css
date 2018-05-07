@@ -55,3 +55,7 @@ ul {
     transform: scale(1);
   }
 }
+
+li pre {
+  font-family: 'Do Hyeon', sans-serif;
+}

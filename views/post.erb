@@ -1,0 +1,24 @@
+<h1> <a href= "/profile/<%= @post.profile.display_name %>"> @<%= @post.profile.display_name %> </a> </h1>
+
+<ul>
+    <li> <%= @post.title %> </li>
+    <li><pre><%= @post.content %></pre></li>
+    <li> <%= @post.created_at.localtime.strftime("posted by @#{@post.profile.display_name} at %I:%M:%p on %-m/%-d/%y") %> </li>
+    <% if @post.updated_at != @post.created_at %>
+    <li> <%= @post.updated_at.localtime.strftime("* updated at %I:%M:%p on %-m/%-d/%y") %> </li>
+    <% end %>
+  </ul>
+
+  <% if @post.profile.user.id ==  session[:user_id]%>
+  <form action="/deletePostf/<%= @post.id %>" method="post">
+    <input type="submit" value="Delete Post">
+  </form>
+
+  <% end %>
+
+  <% if @post.profile.user.id ==  session[:user_id]%>
+  <form action="/edit_post/<%= @post.id %>" method="get">
+    <input type="submit" value="Edit Post">
+  </form>
+
+  <% end %>

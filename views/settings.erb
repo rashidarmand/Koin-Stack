@@ -1,0 +1,34 @@
+<h1>Settings</h1>
+
+
+<h2>Delete Account<h2>
+<p>Deleting your account can not be undone.<br>Please enter your username & password to confirm</p>
+<form action="/deleteAccount" method="post">
+  <label for="username">Username</label>
+  <input type="text" name="username" id="username" placeholder="Username">
+  <label for="password">Password</label>
+  <input type="password" name="password" id="password" placeholder="Password">
+  <input type="submit" value="DELETE">
+</form>
+
+<br>
+
+<h2>Change Password<h2>
+<form action="/changePassword" method="post">
+  <label for="password">Password</label>
+  <input type="password" name="password" id="password" placeholder="Password" pattern="(\w|\d){3,30}" title="Between 3-30 characters no spaces or special characters" required> <br>
+  <label for="new_password">New Password</label>
+  <input type="password" name="new_password" id="new_password" placeholder="New Password" pattern="(\w|\d){3,30}" title="Between 3-30 characters no spaces or special characters" required> <br>
+  <label for="new_password2">Please Re-enter New Password</label>
+  <input type="password" name="new_password2" id="new_password2" placeholder="Re-enter New Password" pattern="(\w|\d){3,30}" title="Between 3-30 characters no spaces or special characters" required> <br>
+  <input type="submit" value="Submit">
+</form>
+
+<br>
+
+<h2>Change Display Name</h2>
+<form action="/changeDisplayName" method="post">
+  <label for="display_name">New Display Name</label>
+  <input type="text" name="display_name" id="display_name" placeholder="Display Name" pattern="(\w|\d){3,30}" title="Between 3-30 characters no spaces or special characters" required>
+  <input type="submit" value="Submit">
+</form>

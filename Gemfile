@@ -1,12 +1,11 @@
 source "https://rubygems.org"
 
+ruby "2.5.0"
 gem "sinatra"
 gem "sinatra-flash"
 gem "activerecord"
-# gem "sqlite3"
 gem "sinatra-activerecord"
 gem "rake"
-# gem "pry"
 
 group :development do
   # our sqlite3 gem will only be used locally

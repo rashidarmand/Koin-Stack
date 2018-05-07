@@ -1,3 +1,42 @@
+<%# <% unless @user.profile == nil %> 
+
 <p>
   <strong> <%= @profile.display_name %> </strong>
+  
 </p>
+
+
+
+<% for post in @profile.posts.reverse
+    # if @user.profile.posts.index(post) % 2 == 0
+ %>
+
+  <ul>
+    <li> @<%= post.profile.display_name %> </li>
+    <li> <%= post.title %> </li>
+    <li> <%= post.content %> </li>
+    <li> <%= post.created_at.localtime.strftime("posted by @#{@profile.display_name} at %I:%M:%p on %-m/%-d/%y") %> </li>
+  </ul>
+
+  <% if @profile.user.id ==  session[:user_id]%>
+  <form action="/deletePostp/<%= post.id %>" method="post">
+    <input type="submit" value="Delete Post">
+  </form>
+
+  <% end %>
+
+  <br>
+
+<%# <% else %>
+
+<%#  <ul style="display: flex; justify-content: flex-end;">
+    <li> <%= post.profile.display_name </li> %>
+   <%# <li> <%= post.title </li> %>
+    <%# <li> <%= post.content </li>  %>
+    <%# <li> <%= post.created_at.localtime.strftime("Posted by #{@user.username} at %I:%M:%p on %-m/%-d/%y") %> 
+  <%# </ul> %> 
+
+
+<% end
+    # end 
+    %>

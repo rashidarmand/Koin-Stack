@@ -1,15 +1,37 @@
 <h1>Results</h1>
 
+<h2>Profiles Matching '<%= params[:search] %>':</h2>
+<% if @profiles.empty?  %>
+  No results found :(
+<% else %>
+    <ul>
+
+  <% @profiles.each do |profile| %>
+
+    <li> <a href= "/profile/<%= profile.display_name %>"> @<%= profile.display_name %> </a> </li>
+
+  <% end %>
+
+    </ul>
+<% end %>
+
+
+<h2>Posts Matching '<%= params[:search] %>':</h2>
+<% if @tags.empty?  %>
+  No results found :(
+<% else %>
+<h3><%= @close_match %></h3>
 <% for tag in @tags
     # if @user.profile.posts.index(post) % 2 == 0
  %>
-
+  <a href="/post/<%= tag.id %>">
   <ul>
-    <li> @<%= tag.profile.display_name %> </li>
+    <li> <a href= "/profile/<%= tag.profile.display_name %>"> @<%= tag.profile.display_name %> </a> </li>
     <li> <%= tag.title %> </li>
-    <li> <%= tag.content %> </li>
+    <li><pre><%= tag.content %></pre></li>
     <li> <%= tag.created_at.localtime.strftime("posted by @#{tag.profile.display_name} at %I:%M:%p on %-m/%-d/%y") %> </li>
   </ul>
+  </a>
   <br>
 
 <%# <% else %>
@@ -25,3 +47,5 @@
 <% end
     # end 
     %>
+
+<% end %>

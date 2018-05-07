@@ -1,0 +1,43 @@
+<% for post in @posts
+    # if @user.profile.posts.index(post) % 2 == 0
+ %>
+
+  <ul>
+    <li> @<%= post.profile.display_name %> </li>
+    <li> <%= post.title %> </li>
+    <li><pre> <%= post.content %> </pre></li>
+    <li> <%= post.created_at.localtime.strftime("posted by @#{post.profile.display_name} at %I:%M:%p on %-m/%-d/%y") %> </li>
+    <% if post.updated_at != post.created_at %>
+    <li> <%= post.updated_at.localtime.strftime("* updated at %I:%M:%p on %-m/%-d/%y") %> </li>
+    <% end %>
+  </ul>
+
+  <% if post.profile.user.id ==  session[:user_id]%>
+  <form action="/deletePostf/<%= post.id %>" method="post">
+    <input type="submit" value="Delete Post">
+  </form>
+
+  <% end %>
+
+  <% if post.profile.user.id ==  session[:user_id]%>
+  <form action="/edit_post/<%= post.id %>" method="get">
+    <input type="submit" value="Edit Post">
+  </form>
+
+  <% end %>
+
+  <br>
+
+<%# <% else %>
+
+<%#  <ul style="display: flex; justify-content: flex-end;">
+    <li> <%= post.profile.display_name </li> %>
+   <%# <li> <%= post.title </li> %>
+    <%# <li> <%= post.content </li>  %>
+    <%# <li> <%= post.created_at.localtime.strftime("Posted by #{@user.username} at %I:%M:%p on %-m/%-d/%y") %> 
+  <%# </ul> %> 
+
+
+<% end
+    # end 
+    %>
