@@ -21,7 +21,7 @@ configure :production do
   set :database, ENV["DATABASE_URL"]
 end
 
-require 'pry'
+# require 'pry'
 
 get "/" do
   # If the user is signed in, show them the signed in homepage otherwise show them the signed out homepage
