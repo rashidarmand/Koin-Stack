@@ -1,8 +1,8 @@
-<h1><span class="green-letter">R</span>esults</h1>
+<h1 class="center-align"><span class="green-letter">R</span>esults</h1>
 
-<h2><span class="green-letter">P</span>rofiles <span class="green-letter">M</span>atching '<%= params[:search] %>':</h2>
+<h2 class="black white-text"><span class="green-letter">P</span>rofiles <span class="green-letter">M</span>atching '<%= params[:search] %>':</h2>
 <% if @profiles.empty?  %>
-  No results found 😞
+  <p class="black white-text"> No results found 😞 </p>
 <% else %>
     <ul class="black">
 
@@ -16,12 +16,12 @@
 <% end %>
 
 
-<h2><span class="green-letter">P</span>osts <span class="green-letter">M</span>atching '<%= params[:search] %>':</h2>
+<h2 class="black white-text"><span class="green-letter">P</span>osts <span class="green-letter">M</span>atching '<%= params[:search] %>':</h2>
 <% if @tags.empty?  %>
-  No results found 😞
+  <p class="black white-text"> No results found 😞 </p>
 <% else %>
 
-<h3><%= @close_match %></h3>
+<h3 class="black white-text"><%= @close_match %></h3>
 
 <% for tag in @tags
     if tag.profile.posts.index(tag) % 2 == 0

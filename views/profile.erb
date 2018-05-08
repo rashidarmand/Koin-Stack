@@ -2,7 +2,7 @@
   <h1><strong>@<%= @profile.display_name %></strong></h1>
   <p>
     <ul>
-      <li><span class="green-letter">N</span>ame: <%= @profile.user.first_name.capitalize%> <%= @profile.user.last_name.capitalize%></li>
+      <li><span class="green-letter">N</span>ame: <%= @profile.user.first_name%> <%= @profile.user.last_name%></li>
       <li><span class="green-letter">B</span>irthday: <%= @profile.user.birthday.localtime.strftime("%-m/%-d/%y")%></li>
       <li><span class="green-letter">M</span>ember Since: <%= @profile.user.created_at.localtime.strftime("%-m/%-d/%y")%></li>
       <li><span class="green-letter">P</span>ost Count: <%= @profile.posts.length%></li>
