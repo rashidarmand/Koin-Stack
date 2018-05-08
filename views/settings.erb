@@ -17,6 +17,7 @@
       <input type="password" name="password" id="password" placeholder="Password" required>
     </div>
     <p class="center-align">
+      <input type='hidden' name='_method' value='DELETE'/>
       <button type="submit" class="waves-effect waves-light btn"><i class="material-icons right">delete_forever</i>Delete</button>
     </p>
   </form>
@@ -41,6 +42,7 @@
       <input type="password" name="new_password2" id="new_password2" placeholder="Re-enter New Password" pattern="\w{3,30}" title="Between 3-30 characters no spaces or special characters" required>
     </div>
     <p class="center-align">
+      <input type='hidden' name='_method' value='PUT'/>
       <button type="submit" class="waves-effect waves-light btn"><i class="material-icons right">check</i>Confirm</button>
     </p>
   </form>
@@ -59,6 +61,7 @@
       <input type="text" name="display_name" id="display_name" placeholder="Display Name" pattern="\w{3,30}" title="Between 3-30 characters no spaces or special characters" required>
     </div>
     <p class="center-align">
+      <input type='hidden' name='_method' value='PUT'/>
       <button type="submit" class="waves-effect waves-light btn"><i class="material-icons right">check</i>Confirm</button>
     </p>
   </form>

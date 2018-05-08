@@ -12,6 +12,7 @@
       <textarea class="materialize-textarea active" type="text" name="content" id="password" placeholder="Content" cols="30" rows="30" required><%= @post.content %></textarea>
     </div>
     <p class="center-align">
+      <input type='hidden' name='_method' value='PUT'/>
       <button type="submit" class="waves-effect waves-light btn"><i class="material-icons right">check</i>Confirm</button>
     </p>
   </form>

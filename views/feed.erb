@@ -36,7 +36,10 @@
                 <li class="right-align"><button type="submit" class="waves-effect waves-light btn"><i class="material-icons">mode_edit</i></button></li>
               </form>
               <form action="/deletePostf/<%= post.id %>" method="post">
-                <li class="right-align"><button type="submit" class="waves-effect waves-light btn"><i class="material-icons">delete_forever</i></button></li>
+                <li class="right-align">
+                  <input type='hidden' name='_method' value='DELETE'/>
+                  <button type="submit" class="waves-effect waves-light btn"><i class="material-icons">delete_forever</i></button>
+                </li>
               </form>
         <% end %>
             </div>
@@ -73,7 +76,10 @@
                 <li class="left-align"><button type="submit" class="waves-effect waves-light btn"><i class="material-icons">mode_edit</i></button></li>
               </form>
               <form action="/deletePostf/<%= post.id %>" method="post">
-                <li class="left-align"><button type="submit" class="waves-effect waves-light btn"><i class="material-icons">delete_forever</i></button></li>
+                <li class="left-align">
+                  <input type='hidden' name='_method' value='DELETE'/>
+                  <button type="submit" class="waves-effect waves-light btn"><i class="material-icons">delete_forever</i></button>
+                </li>
               </form>
         <% end %>
             </div>

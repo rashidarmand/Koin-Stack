@@ -8,7 +8,6 @@ require 'net/http'
 enable :sessions
 set :sessions, true
 
-# set :database, "sqlite3:stonr.db"
 
 # this will ensure this will only be used locally
 configure :development do
@@ -21,7 +20,6 @@ configure :production do
   set :database, ENV["DATABASE_URL"]
 end
 
-# require 'pry'
 
 get "/" do
   # If the user is signed in, show them the signed in homepage otherwise show them the signed out homepage
@@ -81,7 +79,7 @@ end
 
 
 post "/make-post" do
-  # Allow user to make a post and redirect them back to their profile
+  # Creates user's post and redirect them back to their profile
   @user = User.find(session[:user_id]) 
   @post = Post.create(
     title: params[:title],
@@ -91,7 +89,7 @@ post "/make-post" do
   )
   # Look for hashtags in the title & content fields and make tags/post_tags for them if they exist
   if !params[:title].scan(/#\w+{2,50}|@\w+{2,50}/).empty?
-    params[:title].scan(/#\w+{1,50}|@\w+{1,50}/).each do |tag|
+    params[:title].scan(/#\w+{2,50}|@\w+{2,50}/).each do |tag|
       @tag = Tag.create(
         tag: tag
       )
@@ -116,7 +114,7 @@ post "/make-post" do
 end
 
 
-post "/deletePostf/:id" do
+delete "/deletePostf/:id" do
   # Allow user to delete an indvidual post and redirect them back to the feed
   Post.destroy(params[:id])
   flash[:info] = "Post Deleted"
@@ -124,7 +122,7 @@ post "/deletePostf/:id" do
 end
 
 
-post "/deletePostp/:id" do
+delete "/deletePostp/:id" do
   # Allow user to delete an indvidual post and redirect them back to their profile
   user = User.find(session[:user_id])
   Post.destroy(params[:id])
@@ -148,7 +146,7 @@ get "/edit_post/:id" do
 end
 
 
-post "/edit_post/:id" do
+put "/edit_post/:id" do
   # Allow user to edit an indvidual post
   user = User.find(session[:user_id])
   this_post = Post.find_by(id: params[:id])
@@ -252,12 +250,13 @@ get "/settings" do
   if session[:user_id]
     erb :settings
   else
+    flash[:warning] = "Please Sign In"
     redirect "/"
   end
 end
 
 
-post "/deleteAccount" do
+delete "/deleteAccount" do
   # If the logged in user wants to delete their account, have them enter their current username/password to confirm they are sure.
   # If the username/password incorrect redirect them back to the same page and let them know what they did wrong
   user = User.find(session[:user_id]) 
@@ -275,7 +274,7 @@ post "/deleteAccount" do
 end
 
 
-post "/changePassword" do
+put "/changePassword" do
   # If logged in user wants to change their password have them enter current password once and new password twice
   # If one of the fields has a mistake let them know what they did wrong
   user = User.find(session[:user_id]) 
@@ -293,7 +292,7 @@ post "/changePassword" do
 end
 
 
-post "/changeDisplayName" do
+put "/changeDisplayName" do
   # If logged in user wants to change their display name have them enter the new one that they want it to be changed to.
   user = User.find(session[:user_id])
   user.profile.update(display_name: params[:display_name])
@@ -301,9 +300,3 @@ post "/changeDisplayName" do
   redirect "/profile/#{user.profile.display_name}"
 end
 
-
-
-
-
-
-# binding.pry
