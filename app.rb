@@ -112,7 +112,7 @@ post "/make-post" do
       )
     end
   end 
-  redirect "/profile/#{@user.profile.display_name}"
+  redirect "/feed"
 end
 
 
@@ -181,7 +181,7 @@ post "/edit_post/:id" do
   end
   # Let user know the post was updated successfully and take them back to their profile page
   flash[:info] = "Post Updated"
-  redirect "/profile/#{user.profile.display_name}"
+  redirect "/feed"
 end
 
 
@@ -239,7 +239,7 @@ get URI.unescape("/results/") do
   Tag.where(tag: params[:search]).reverse.each{|t| t.posts.each{|p|  @tags.push(p)}}
   # If no direct match found, try and find similar matches
   if @tags.empty?
-    @close_match = "*No direct matches found* <br><br> Similar Matches to '#{params[:search]}':"
+    @close_match = "*No direct matches found* <br><br> <span class='green-letter'>S</span>imilar <span class='green-letter'>M</span>atches to '#{params[:search]}':"
     Tag.where("tag LIKE ?", "#{params[:search]}%").reverse.each{|t| t.posts.each{|p|  @tags.push(p)}}
   end
   # Show results of the search
@@ -282,7 +282,7 @@ post "/changePassword" do
   if params[:password] == user.password && params[:new_password] == params[:new_password2]
     user.update(password: params[:new_password])
     flash[:info] = "Password Updated"
-    redirect "/settings"
+    redirect "/profile/#{user.profile.display_name}"
   elsif params[:password] != user.password
     flash[:warning] = "Password is incorrect"
     redirect "/settings"
@@ -298,7 +298,7 @@ post "/changeDisplayName" do
   user = User.find(session[:user_id])
   user.profile.update(display_name: params[:display_name])
   flash[:info] = "Display Name Updated"
-  redirect "/settings"
+  redirect "/profile/#{user.profile.display_name}"
 end
 
 

@@ -1,22 +1,206 @@
-@import url('https://fonts.googleapis.com/css?family=Do+Hyeon');
+@import url('https://fonts.googleapis.com/css?family=Exo|Open+Sans');
 
 body {
-  font-family: 'Do Hyeon', sans-serif;
+  font-family: 'Exo', sans-serif;
+  /* background-color: #F2F2F2; */
+  background-image: url('/images/bitcoin_background.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-/* #logo{
+/* Nav Styling  */
+nav {
+  height: 70px;
+  background-color: black;
+}
 
-} */
+div.nav-wrapper.hide-on-med-and-down {
+  padding-left: 300px;
+}
+
+img#logo {
+  height: 100%;
+}
+
+div.user-view {
+  height: 175px;
+}
+
+.sidenav .user-view {
+  margin: 0;
+}
+
+input#search {
+  font-family: 'Exo', sans-serif;
+  color: #005a41;
+  margin: 0;
+}
+
+input#search::placeholder {
+  font-family: 'Exo', sans-serif;
+  color: #F2F2F2;
+}
+
+input#search:focus::placeholder {
+  font-family: 'Exo', sans-serif;
+  color: #005a41;
+}
+
+div.input-field {
+  margin: 0;
+}
+
+ul#big-screen-side-nav.sidenav {
+  background-color: #F2F2F2;
+}
+
+ul#big-screen-side-nav.sidenav li a {
+  font-size: 1.5rem;
+}
+
+ul#big-screen-side-nav.sidenav li a:hover {
+  background-color: black;
+  color: #F2F2F2;
+}
+
+ul#mobile-demo.sidenav {
+  background-color: #F2F2F2;
+}
+
+ul#mobile-demo.sidenav li a {
+  font-size: 1.5rem;
+}
+
+ul#mobile-demo.sidenav li a:hover {
+  background-color: black;
+  color: #F2F2F2;
+}
+
+div.nav-wrapper.mobile-search input#search::placeholder {
+  color: black;
+}
+
+div.nav-wrapper.mobile-search input#search:focus{
+  background-color: black;
+  color: #F2F2F2;
+}
+
+div.nav-wrapper.mobile-search input#search:focus::placeholder {
+  color: #F2F2F2;
+}
+
+div.nav-wrapper.mobile-search i {
+  color: #005a41;
+}
+
+/* Changes color of icons in search bar when in focus on medium-small screens */
+div.nav-wrapper.mobile-search .input-field input[type=search]:focus:not(.browser-default) + label i,
+div.nav-wrapper.mobile-search .input-field input[type=search]:focus:not(.browser-default) ~ .material-icons {
+  color: #F2F2F2;
+}
 
 
 
 
+/* Page Styling */
+::placeholder {
+  color: #005a41;
+}
+
+span.green-letter{
+  color: #005a41;
+}
 
 ul {
   margin: 0;
   padding: 0;
 }
 
+/* li pre {
+  font-family: 'Exo', sans-serif;
+} */
+
+a:link {
+  color: #005a41;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:visited {
+  color: #F2F2F2;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:hover {
+  color: #005a41;
+  background-color: transparent;
+  text-decoration: underline;
+}
+a:active {
+  color: #005a41;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+
+
+/* Form styling */
+input#username , input#password, input#first_name, input#last_name, input#email, input#birthday, input#display_name, input#title, textarea.materialize-textarea, input#new_password, input#new_password2, input#display_name {
+  font-family: 'Exo', sans-serif;
+  color: #F2F2F2;
+  margin: 0;
+}
+
+input#username:focus , input#password:focus, input#first_name:focus, input#last_name:focus, input#email:focus, input#birthday:focus, input#display_name:focus, input#title:focus, textarea.materialize-textarea:focus, input#new_password:focus, input#new_password2:focus, input#display_name:focus  {
+  font-family: 'Exo', sans-serif;
+  background-color: #F2F2F2;
+  color: black;
+  margin: 0;
+}
+
+input#username::placeholder , input#password::placeholder, input#first_name::placeholder, input#last_name::placeholder, input#email::placeholder, input#birthday::placeholder, input#display_name::placeholder, input#title::placeholder, textarea.materialize-textarea::placeholder, input#new_password::placeholder, input#new_password2::placeholder, input#display_name::placeholder {
+  font-family: 'Exo', sans-serif;
+  color: #F2F2F2;
+  margin: 0;
+}
+
+input#username:focus::placeholder , input#password:focus::placeholder, input#first_name:focus::placeholder, input#last_name:focus::placeholder, input#email:focus::placeholder, input#birthday:focus::placeholder, input#display_name:focus::placeholder, input#title:focus::placeholder, textarea.materialize-textarea:focus::placeholder, input#new_password:focus::placeholder, input#new_password2:focus::placeholder, input#display_name:focus::placeholder  {
+  font-family: 'Exo', sans-serif;
+  color: black;
+  margin: 0;
+}
+
+
+
+
+/* Card Styling */
+.btn, .btn:focus {
+  background: #F2F2F2;
+  color: #005a41;
+  border: 1px solid #005a41;
+}
+
+.btn:hover {
+  background: black;
+  color: #F2F2F2;
+  border: 1px solid #005a41;
+}
+
+a.post-link {
+  display: block;
+}
+
+img.circle.responsive-img.left , img.circle.responsive-img.right {
+  height: 60px;
+}
+
+
+
+
+
+
+
+
+/* Flash Styling */
 .flash {
   border-radius: 2px;
   padding: 20px;
@@ -50,6 +234,8 @@ ul {
   display: none;
 }
 
+
+/* Keyframes */
 @keyframes beckon {
   0% {
     transform: scale(1);
@@ -64,12 +250,9 @@ ul {
   }
 }
 
-li pre {
-  font-family: 'Do Hyeon', sans-serif;
-}
 
-p a.post {
+/* p a.post {
   display: block;
   width: 100%;
   height: 100%;
-}
+} */

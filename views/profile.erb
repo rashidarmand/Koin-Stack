@@ -1,42 +1,105 @@
-<%# <% unless @user.profile == nil %> 
-
-<p>
-  <strong> <%= @profile.display_name %> </strong>
-  
-</p>
+<div class="black white-text center-align">
+  <h1><strong>@<%= @profile.display_name %></strong></h1>
+  <p>
+    <ul>
+      <li><span class="green-letter">N</span>ame: <%= @profile.user.first_name.capitalize%> <%= @profile.user.last_name.capitalize%></li>
+      <li><span class="green-letter">B</span>irthday: <%= @profile.user.birthday.localtime.strftime("%-m/%-d/%y")%></li>
+      <li><span class="green-letter">M</span>ember Since: <%= @profile.user.created_at.localtime.strftime("%-m/%-d/%y")%></li>
+      <li><span class="green-letter">P</span>ost Count: <%= @profile.posts.length%></li>
+    </ul>
+  </p>
+</div>
 
 
 
 <% for post in @profile.posts.reverse
-    # if @user.profile.posts.index(post) % 2 == 0
+    if @profile.posts.index(post) % 2 == 0
  %>
 
-  <ul>
-    <li> @<%= post.profile.display_name %> </li>
-    <li> <%= post.title %> </li>
-    <li> <%= post.content %> </li>
-    <li> <%= post.created_at.localtime.strftime("posted by @#{@profile.display_name} at %I:%M:%p on %-m/%-d/%y") %> </li>
-  </ul>
+  <div class="card horizontal">
+      <div class="card-stacked black white-text">
+        <div class="card-content">
+          <div class="row">
+            <div class="col s12">
+              <img src="/images/S.png" alt="" class="circle responsive-img left">
+              <h5 class="right-align"><a href= "/profile/<%= post.profile.display_name %>">@<%= post.profile.display_name %></a></h5>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <a class="post-block" href="/post/<%= post.id %>">
+        <% unless post.title.empty? %>
+          <h4 class="center-align"><%= post.title %></h4>
+        <% end %>
+          <p class="center-align"><%= post.content %></p>
+          </a>
+        </div>
+        <div class="card-action">
+          <ul>
+            <div class="col s10 left-align">
+              <li><%= post.created_at.localtime.strftime("posted by @#{post.profile.display_name} at %I:%M:%p on %-m/%-d/%y") %></li>
+        <% if post.updated_at != post.created_at %>
+              <li><%= post.updated_at.localtime.strftime("* updated at %I:%M:%p on %-m/%-d/%y") %></li>
+        <% end %>
+            </div>
+            <div class="col s2">
+        <% if post.profile.user.id ==  session[:user_id]%>
+              <form action="/edit_post/<%= post.id %>" method="get">
+                <li class="right-align"><button type="submit" class="waves-effect waves-light btn"><i class="material-icons">mode_edit</i></button></li>
+              </form>
+              <form action="/deletePostf/<%= post.id %>" method="post">
+                <li class="right-align"><button type="submit" class="waves-effect waves-light btn"><i class="material-icons">delete_forever</i></button></li>
+              </form>
+        <% end %>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
 
-  <% if @profile.user.id ==  session[:user_id]%>
-  <form action="/deletePostp/<%= post.id %>" method="post">
-    <input type="submit" value="Delete Post">
-  </form>
 
-  <% end %>
+<% else %>
 
-  <br>
-
-<%# <% else %>
-
-<%#  <ul style="display: flex; justify-content: flex-end;">
-    <li> <%= post.profile.display_name </li> %>
-   <%# <li> <%= post.title </li> %>
-    <%# <li> <%= post.content </li>  %>
-    <%# <li> <%= post.created_at.localtime.strftime("Posted by #{@user.username} at %I:%M:%p on %-m/%-d/%y") %> 
-  <%# </ul> %> 
+  <div class="card horizontal">
+      <div class="card-stacked black white-text">
+        <div class="card-content">
+          <div class="row">
+            <div class="col s12">
+              <img src="/images/S.png" alt="" class="circle responsive-img right">
+              <h5 class="left-align"><a href= "/profile/<%= post.profile.display_name %>">@<%= post.profile.display_name %></a></h5>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <a class="post-block" href="/post/<%= post.id %>">
+        <% unless post.title.empty? %>
+          <h4 class="center-align"><%= post.title %></h4>
+        <% end %>
+          <p class="center-align"><%= post.content %></p>
+          </a>
+        </div>
+        <div class="card-action">
+          <ul>
+            <div class="col s2">
+        <% if post.profile.user.id ==  session[:user_id]%>
+              <form action="/edit_post/<%= post.id %>" method="get">
+                <li class="left-align"><button type="submit" class="waves-effect waves-light btn"><i class="material-icons">mode_edit</i></button></li>
+              </form>
+              <form action="/deletePostf/<%= post.id %>" method="post">
+                <li class="left-align"><button type="submit" class="waves-effect waves-light btn"><i class="material-icons">delete_forever</i></button></li>
+              </form>
+        <% end %>
+            </div>
+            <div class="col s10 right-align">
+              <li><%= post.created_at.localtime.strftime("posted by @#{post.profile.display_name} at %I:%M:%p on %-m/%-d/%y") %></li>
+        <% if post.updated_at != post.created_at %>
+              <li><%= post.updated_at.localtime.strftime("* updated at %I:%M:%p on %-m/%-d/%y") %></li>
+        <% end %>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
 
 
 <% end
-    # end 
+    end 
     %>

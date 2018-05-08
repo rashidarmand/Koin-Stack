@@ -1,8 +1,10 @@
-<ul>
+<h1 class="center-align"><span class="green-letter">U</span>sers</h1>
+
+<ul class="black">
 
 <% @users.each do |user| %>
 
-  <li> <a href= "profile/<%= user.profile.display_name %>"> <%= user.profile.display_name %> </a> </li>
+  <li> <a href= "profile/<%= user.profile.display_name %>"> @<%= user.profile.display_name %> </a> </li>
 
 <% end %>
 

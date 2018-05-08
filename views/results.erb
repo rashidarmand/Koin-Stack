@@ -1,10 +1,10 @@
-<h1>Results</h1>
+<h1><span class="green-letter">R</span>esults</h1>
 
-<h2>Profiles Matching '<%= params[:search] %>':</h2>
+<h2><span class="green-letter">P</span>rofiles <span class="green-letter">M</span>atching '<%= params[:search] %>':</h2>
 <% if @profiles.empty?  %>
-  No results found :(
+  No results found 😞
 <% else %>
-    <ul>
+    <ul class="black">
 
   <% @profiles.each do |profile| %>
 
@@ -16,41 +16,102 @@
 <% end %>
 
 
-<h2>Posts Matching '<%= params[:search] %>':</h2>
+<h2><span class="green-letter">P</span>osts <span class="green-letter">M</span>atching '<%= params[:search] %>':</h2>
 <% if @tags.empty?  %>
-  No results found :(
+  No results found 😞
 <% else %>
+
 <h3><%= @close_match %></h3>
+
 <% for tag in @tags
-    # if @user.profile.posts.index(post) % 2 == 0
+    if tag.profile.posts.index(tag) % 2 == 0
  %>
-<p>
-  <a class="post" href="/post/<%= tag.id %>">
-  <ul>
-    <li> <a href= "/profile/<%= tag.profile.display_name %>"> @<%= tag.profile.display_name %> </a> </li>
-    <li> <%= tag.title %> </li>
-    <li><pre><%= tag.content %></pre></li>
-    <li> <%= tag.created_at.localtime.strftime("posted by @#{tag.profile.display_name} at %I:%M:%p on %-m/%-d/%y") %> </li>
-    <% if tag.updated_at != tag.created_at %>
-    <li> <%= tag.updated_at.localtime.strftime("* updated at %I:%M:%p on %-m/%-d/%y") %> </li>
-    <% end %>
-  </ul>
-  </a>
-</p>
-  <br>
 
-<%# <% else %>
+    <div class="card horizontal">
+      <div class="card-stacked black white-text">
+        <div class="card-content">
+          <div class="row">
+            <div class="col s12">
+              <img src="/images/S.png" alt="" class="circle responsive-img left">
+              <h5 class="right-align"><a href= "/profile/<%= tag.profile.display_name %>">@<%= tag.profile.display_name %></a></h5>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <a class="post-block" href="/post/<%= tag.id %>">
+        <% unless tag.title.empty? %>
+          <h4 class="center-align"><%= tag.title %></h4>
+        <% end %>
+          <p class="center-align"><%= tag.content %></p>
+          </a>
+        </div>
+        <div class="card-action">
+          <ul>
+            <div class="col s10 left-align">
+              <li><%= tag.created_at.localtime.strftime("posted by @#{tag.profile.display_name} at %I:%M:%p on %-m/%-d/%y") %></li>
+        <% if tag.updated_at != tag.created_at %>
+              <li><%= tag.updated_at.localtime.strftime("* updated at %I:%M:%p on %-m/%-d/%y") %></li>
+        <% end %>
+            </div>
+            <div class="col s2">
+        <% if tag.profile.user.id ==  session[:user_id]%>
+              <form action="/edit_post/<%= tag.id %>" method="get">
+                <li class="right-align"><button type="submit" class="waves-effect waves-light btn"><i class="material-icons">mode_edit</i></button></li>
+              </form>
+              <form action="/deletePostf/<%= tag.id %>" method="post">
+                <li class="right-align"><button type="submit" class="waves-effect waves-light btn"><i class="material-icons">delete_forever</i></button></li>
+              </form>
+        <% end %>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
 
-<%#  <ul style="display: flex; justify-content: flex-end;">
-    <li> <%= post.profile.display_name </li> %>
-   <%# <li> <%= post.title </li> %>
-    <%# <li> <%= post.content </li>  %>
-    <%# <li> <%= post.created_at.localtime.strftime("Posted by #{@user.username} at %I:%M:%p on %-m/%-d/%y") %> 
-  <%# </ul> %> 
+<% else %>
+
+    <div class="card horizontal">
+      <div class="card-stacked black white-text">
+        <div class="card-content">
+          <div class="row">
+            <div class="col s12">
+              <img src="/images/S.png" alt="" class="circle responsive-img right">
+              <h5 class="left-align"><a href= "/profile/<%= tag.profile.display_name %>">@<%= tag.profile.display_name %></a></h5>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <a class="post-block" href="/post/<%= tag.id %>">
+        <% unless tag.title.empty? %>
+          <h4 class="center-align"><%= tag.title %></h4>
+        <% end %>
+          <p class="center-align"><%= tag.content %></p>
+          </a>
+        </div>
+        <div class="card-action">
+          <ul>
+            <div class="col s2">
+        <% if tag.profile.user.id ==  session[:user_id]%>
+              <form action="/edit_post/<%= tag.id %>" method="get">
+                <li class="left-align"><button type="submit" class="waves-effect waves-light btn"><i class="material-icons">mode_edit</i></button></li>
+              </form>
+              <form action="/deletePostf/<%= tag.id %>" method="post">
+                <li class="left-align"><button type="submit" class="waves-effect waves-light btn"><i class="material-icons">delete_forever</i></button></li>
+              </form>
+        <% end %>
+            </div>
+            <div class="col s10 right-align">
+              <li><%= tag.created_at.localtime.strftime("posted by @#{tag.profile.display_name} at %I:%M:%p on %-m/%-d/%y") %></li>
+        <% if tag.updated_at != tag.created_at %>
+              <li><%= tag.updated_at.localtime.strftime("* updated at %I:%M:%p on %-m/%-d/%y") %></li>
+        <% end %>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
 
 
 <% end
-    # end 
+    end 
     %>
 
 <% end %>

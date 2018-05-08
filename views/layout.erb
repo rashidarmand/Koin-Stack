@@ -6,129 +6,185 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Koin Stack</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Exo|Open+Sans" rel="stylesheet">
   <!--Import materialize.css-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
   <link rel="stylesheet" type="text/css" href="<%= url("css/app.css")%>">
   <%# <link rel="stylesheet" href="app.css"> %>
 </head>
 <body>
-  <% flash.keys.each do |type| %>
-    <div class="flash <%= type %>">
-      <%= flash[type] %>
-      <a class="close-button" href="#">x</a>
-    </div>
-  <% end %>
-
-  <ul>
+  
   <% if session[:user_id] %>
 
-    <!-- only show this code when signed in -->
+    <!-- **** ONLY SHOW WHEN SIGNED IN **** -->
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper">
+          <a href="/"> <img src="/images/S.png" class="brand-logo" id="logo" alt="" srcset=""> </a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="large material-icons">menu</i></a>
+          <div class="nav-wrapper hide-on-med-and-down">
+            <form action="/search" method="post">
+              <div class="input-field">
+                <input type="search" name="search" id="search" placeholder="e.g. #bitcoin or @markets">
+                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
+              </div>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </div>
+      <ul id="mobile-demo" class="sidenav center-align">
+        <li><div class="user-view">
+          <div id="sidenavLogo" class="background black center-align">
+            <img src="/images/full_logo copy.png">
+          </div>
+        </div></li>
+        <li><div class="nav-wrapper mobile-search">
+          <form action="/search" method="post">
+            <div class="input-field">
+              <input type="search" name="search" id="search" placeholder="e.g. #bitcoin or @markets">
+              <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+              <i class="material-icons">close</i>
+            </div>
+          </form>
+        </div></li>
+        <li><a class="" href="/" /><span class="green-letter">H</span>ome</a></li>
+        <li><a href="/profile/<%= User.find(session[:user_id]).profile.display_name %>" /><span class="green-letter">M</span>y <span class="green-letter">P</span>rofile</a></li>
+        <li><a href="/settings" /><span class="green-letter">S</span>ettings</a></li>
+        <li><a class="" href="/feed" /><span class="green-letter">F</span>eed</a></li>
+        <li><a class="" href="/users" /><span class="green-letter">U</span>sers</a></li>
+        <li><a class="" href="/sign-out" /><span class="green-letter">S</span>ign <span class="green-letter">O</span>ut</a></li>
+      </ul>
+    <!-- **** PAGE LAYOUT HERE **** -->
+    <div class="row">
+    
+      <div class="col l3 hide-on-med-and-down">
+        <div id="" class="container flow-text center-align">
+          <ul id="big-screen-side-nav" class="sidenav sidenav-fixed">
+            <li><div class="user-view">
+              <div id="sidenavLogo" class="background black center-align">
+                <img src="/images/full_logo copy.png">
+              </div>
+            </div></li>
+            <li><a class="" href="/" /><span class="green-letter">H</span>ome</a></li>
+            <li><a href="/profile/<%= User.find(session[:user_id]).profile.display_name %>" /><span class="green-letter">M</span>y <span class="green-letter">P</span>rofile</a></li>
+            <li><a href="/settings" /><span class="green-letter">S</span>ettings</a></li>
+            <li><a class="" href="/feed" /><span class="green-letter">F</span>eed</a></li>
+            <li><a class="" href="/users" /><span class="green-letter">U</span>sers</a></li>
+            <li><a class="" href="/sign-out" /><span class="green-letter">S</span>ign <span class="green-letter">O</span>ut</a></li>
+          </ul>
+        </div>
+      </div>
 
-    <!-- clicking on this link will hit the get "/sign-out" route -->
-    <a href="/" />Home</a>
-    <a href="/users" />Users</a>
-    <a href="/feed" />Feed</a>
-    <a href="/profile/<%= User.find(session[:user_id]).profile.display_name %>" />My Profile</a>
-    <a href="/settings" />Settings</a>
-    <a href="/sign-out" />Sign out</a>
+      <div class="col s12 l9">
+        <div class="container flow-text">
+          <% flash.keys.each do |type| %>
+            <div class="flash <%= type %>">
+              <%= flash[type] %>
+              <a class="close-button" href="#">x</a>
+            </div>
+          <% end %>
+
+          <%= yield %>
+
+          <div class="footer-copyright hide-on-large-only">
+            <div class="col s12 center-align">
+              <span class="green-letter">©</span> 2018 Copyright <span class="green-letter">K</span>oin <span class="green-letter">S</span>tack
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
 
   <% else %>
 
-    <!-- only show this code when signed out -->
-    <a href="/" />Home</a>
-    <a href="/sign-in" />Sign In</a>
-    <a href="/sign-up" />Sign Up</a>
-    <a href="/users" />Users</a>
-    <a href="/feed" />Feed</a>
-  
-
-<%# Test %>
-
-  <%# <ul id="nav-mobile" class="sidenav sidenav-fixed">
-    <li class="search">
-      <div class="search-wrapper">
-        <form action="/search" method="post">
-          <input type="search" name="search" id="search" placeholder="E.G. 'sause' or '#hello' ">
-          <i class="material-icons left">search</i>
-          <input type="submit" value="Go">
-        </form>
-        <%# <input id="search" placeholder="Search"><i class="material-icons left">search</i> %>
-        <%# <div class="search-results"></div>
-      </div>
-    </li>
-    <li><a class="green-text text-darken-4" href="/cookies">Cookies</a></li>
-    <li><a class="green-text text-darken-4" href="/cakes">Cakes</a></li>
-    <li><a class="green-text text-darken-4" href="/muffins">Muffins</a></li>
-    <li><a class="green-text text-darken-4" href="/newsletter">Newsletter</a></li>
-  </ul> %> 
-
-<div class="container"><a href="#" data-target="nav-mobile" class="top-nav sidenav-trigger full hide-on-large-only right"><i class="material-icons">menu</i></a></div>
-      <ul id="nav-mobile" class="sidenav sidenav-fixed">
-        <li class="logo"><a id="logo-container" href="/" class="brand-logo">
-          <a href="/"> <img src="images/full_logo_tp.png" class="brand-logo" id="logo" alt="" srcset=""> </a>
-          <ul id="version-dropdown" class="dropdown-content">
-            <li><a>1.0.0-rc.1</a></li>
-            <li><a href="http://archives.materializecss.com/0.100.2/">0.100.2</a></li>
-          </ul>
-        </li>
-        <li class="search">
-          <div class="search-wrapper">
-            <input id="search" placeholder="Search"><i class="material-icons">search</i>
-            <div class="search-results"></div>
+    <!-- **** ONLY SHOW WHEN SIGNED OUT **** -->
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper">
+          <a href="/"> <img src="/images/S.png" class="brand-logo" id="logo" alt="" srcset=""> </a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="large material-icons">menu</i></a>
+          <div class="nav-wrapper hide-on-med-and-down">
+            <form action="/search" method="post">
+              <div class="input-field">
+                <input type="search" name="search" id="search" placeholder="e.g. #bitcoin or @markets">
+                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
+              </div>
+            </form>
           </div>
-        </li>
-        <li class="bold"><a href="about.html" class="waves-effect waves-teal">About</a></li>
-        <li class="bold"><a href="getting-started.html" class="waves-effect waves-teal">Getting Started</a></li>
-        <li class="no-padding">
-        <li class="bold"><a href="mobile.html" class="waves-effect waves-teal">Mobile</a></li>
-        <li class="bold"><a href="showcase.html" class="waves-effect waves-teal">Showcase</a></li>
-        <li class="bold"><a href="themes.html" class="waves-effect waves-teal">Themes</a></li>
+        </div>
+      </nav>
+    </div>
+      <ul id="mobile-demo" class="sidenav center-align">
+        <li><div class="user-view">
+          <div id="sidenavLogo" class="background black center-align">
+            <img src="/images/full_logo copy.png">
+          </div>
+        </div></li>
+        <li><div class="nav-wrapper mobile-search">
+          <form action="/search" method="post">
+            <div class="input-field">
+              <input type="search" name="search" id="search" placeholder="e.g. #bitcoin or @markets">
+              <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+              <i class="material-icons">close</i>
+            </div>
+          </form>
+        </div></li>
+        <li><a class="" href="/" /><span class="green-letter">H</span>ome</a></li>
+        <li><a class="" href="/feed" /><span class="green-letter">F</span>eed</a></li>
+        <li><a class="" href="/users" /><span class="green-letter">U</span>sers</a></li>
+        <li><a class="" href="/sign-in" /><span class="green-letter">S</span>ign <span class="green-letter">I</span>n</a></li>
+        <li><a class="" href="/sign-up" /><span class="green-letter">S</span>ign <span class="green-letter">U</span>p</a></li>
       </ul>
-
-
-
-
-      <%# <div class="container"><a href="#" data-target="nav-mobile" class="top-nav sidenav-trigger full hide-on-large-only"><i class="material-icons">menu</i></a></div>
-      <ul id="nav-mobile" class="sidenav sidenav-fixed">
-        <li class="logo"><a id="logo-container" href="/" class="brand-logo">
-            <object id="front-page-logo" type="image/svg+xml" data="res/materialize.svg">Your browser does not support SVG</object></a></li>
-        <li class="version"><a href="#" data-target="version-dropdown" class="dropdown-trigger">
-            1.0.0-rc.1
-            <svg class="caret" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></a>
-          <ul id="version-dropdown" class="dropdown-content">
-            <li><a>1.0.0-rc.1</a></li>
-            <li><a href="http://archives.materializecss.com/0.100.2/">0.100.2</a></li>
+    <!-- **** PAGE LAYOUT HERE **** -->
+    <div class="row">
+    
+      <div class="col l3 hide-on-med-and-down">
+        <div id="" class="container flow-text center-align">
+          <ul id="big-screen-side-nav" class="sidenav sidenav-fixed">
+            <li><div class="user-view">
+              <div id="sidenavLogo" class="background black center-align">
+                <img src="/images/full_logo copy.png">
+              </div>
+            </div></li>
+            <li><a class="" href="/" /><span class="green-letter">H</span>ome</a></li>
+            <li><a class="" href="/feed" /><span class="green-letter">F</span>eed</a></li>
+            <li><a class="" href="/users" /><span class="green-letter">U</span>sers</a></li>
+            <li><a class="" href="/sign-in" /><span class="green-letter">S</span>ign <span class="green-letter">I</span>n</a></li>
+            <li><a class="" href="/sign-up" /><span class="green-letter">S</span>ign <span class="green-letter">U</span>p</a></li>
           </ul>
-        </li>
-        <li class="search">
-          <div class="search-wrapper">
-            <input id="search" placeholder="Search"><i class="material-icons">search</i>
-            <div class="search-results"></div>
+        </div>
+      </div>
+
+      <div class="col s12 l9">
+        <div class="container flow-text">
+          <% flash.keys.each do |type| %>
+            <div class="flash <%= type %>">
+              <%= flash[type] %>
+              <a class="close-button" href="#">x</a>
+            </div>
+          <% end %>
+
+          <%= yield %>
+
+          <div class="footer-copyright hide-on-large-only">
+            <div class="col s12 center-align">
+              <span class="green-letter">©</span> 2018 Copyright <span class="green-letter">K</span>oin <span class="green-letter">S</span>tack
+            </div>
           </div>
-        </li>
-        <li class="bold"><a href="about.html" class="waves-effect waves-teal">About</a></li>
-        <li class="bold"><a href="getting-started.html" class="waves-effect waves-teal">Getting Started</a></li>
-        <li class="no-padding"> </li> %>
-        
+        </div>
+      </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
+    </div>
 
 
   <% end %>
-  </ul>
 
-  <%= yield %>
 
   <!--JavaScript at end of body for optimized loading-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>

@@ -1,26 +1,27 @@
-<h1>Dashboard</h1>
+<h1 class="center-align"><span class="green-letter">D</span>ashboard</h1>
 
-Welcome to Koin Stack <%= @user.profile.display_name %>! Kick your shoes off, stay a while!
+<section class="black white-text center-align">
+  <br>
+  <p>Hi @<%= @user.profile.display_name %> !</p>
+  <br>
+  <p>Make a post below or hit the feed to check out the latest cryptocurrency news!</p>
+  <br>
+</section>
 
-<form action="/search" method="post">
-<input type="search" name="search" id="search" placeholder="E.G. 'sause' or '#hello' ">
-<input type="submit" value="Go">
-</form>
-
-<h1>Make A Post!</h1>
-
-<form action="/make-post" method="post">
-  <input type="file" name="image" placeholder="Image" multiple>
-  <input type="text" name="title" id="title" placeholder="Title">
-  <%# <input type="file" name="video" placeholder="Video"multiple> %>
-  <textarea type="text" name="content" id="password" placeholder="Post" cols="30" rows="10" required></textarea>
-  <%# <input type="text" name="title" id="title" placeholder="Title"> %>
-  <input type="submit" value="Go">
-</form>
-
-<br>
-<br>
-
-
-
+<div class="row black white-text">
+  <p>
+    <h3 class="center-align">New Post</h3>
+  </p>
+  <form action="/make-post" method="post">
+    <div class="col s12">
+      <input type="text" name="title" id="title" placeholder="Title">
+    </div>
+    <div class="col s12 input-field">
+      <textarea class="materialize-textarea" type="text" name="content" id="password" placeholder="Content" cols="30" rows="30" required></textarea>
+    </div>
+    <p class="center-align">
+      <button type="submit" class="waves-effect waves-light btn"><i class="material-icons right">check</i>Post</button>
+    </p>
+  </form>
+</div>
 

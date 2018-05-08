@@ -1,34 +1,65 @@
-<h1>Settings</h1>
+<h1 class="center-align"><span class="green-letter">S</span>ettings</h1>
 
 
-<h2>Delete Account<h2>
-<p>Deleting your account can not be undone.<br>Please enter your username & password to confirm</p>
-<form action="/deleteAccount" method="post">
-  <label for="username">Username</label>
-  <input type="text" name="username" id="username" placeholder="Username">
-  <label for="password">Password</label>
-  <input type="password" name="password" id="password" placeholder="Password">
-  <input type="submit" value="DELETE">
-</form>
+<h2 class="center-align"><span class="green-letter">D</span>elete <span class="green-letter">A</span>ccount<h2>
 
-<br>
+<p>Deleting your account can not be undone</p>
 
-<h2>Change Password<h2>
-<form action="/changePassword" method="post">
-  <label for="password">Password</label>
-  <input type="password" name="password" id="password" placeholder="Password" pattern="(\w|\d){3,30}" title="Between 3-30 characters no spaces or special characters" required> <br>
-  <label for="new_password">New Password</label>
-  <input type="password" name="new_password" id="new_password" placeholder="New Password" pattern="(\w|\d){3,30}" title="Between 3-30 characters no spaces or special characters" required> <br>
-  <label for="new_password2">Please Re-enter New Password</label>
-  <input type="password" name="new_password2" id="new_password2" placeholder="Re-enter New Password" pattern="(\w|\d){3,30}" title="Between 3-30 characters no spaces or special characters" required> <br>
-  <input type="submit" value="Submit">
-</form>
+<div class="row black white-text">
+  <p>
+    <h3 class="center-align">Please enter your username & password to confirm</h3>
+  </p>
+  <form action="/deleteAccount" method="post">
+    <div class="col s12">
+      <input type="text" name="username" id="username" placeholder="Username" required>
+    </div>
+    <div class="col s12">
+      <input type="password" name="password" id="password" placeholder="Password" required>
+    </div>
+    <p class="center-align">
+      <button type="submit" class="waves-effect waves-light btn"><i class="material-icons right">delete_forever</i>Delete</button>
+    </p>
+  </form>
+</div>
 
-<br>
 
-<h2>Change Display Name</h2>
-<form action="/changeDisplayName" method="post">
-  <label for="display_name">New Display Name</label>
-  <input type="text" name="display_name" id="display_name" placeholder="Display Name" pattern="(\w|\d){3,30}" title="Between 3-30 characters no spaces or special characters" required>
-  <input type="submit" value="Submit">
-</form>
+
+<h2 class="center-align"><span class="green-letter">C</span>hange <span class="green-letter">P</span>assword<h2>
+
+<div class="row black white-text">
+  <p>
+    <h3 class="center-align">Please enter current password &  new password to confirm</h3>
+  </p>
+  <form action="/changePassword" method="post">
+    <div class="col s12">
+      <input type="password" name="password" id="password" placeholder="Current Password" required>
+    </div>
+    <div class="col s12">
+      <input type="password" name="new_password" id="new_password" placeholder="New Password" pattern="\w{3,30}" title="Between 3-30 characters no spaces or special characters" required>
+    </div>
+    <div class="col s12">
+      <input type="password" name="new_password2" id="new_password2" placeholder="Re-enter New Password" pattern="\w{3,30}" title="Between 3-30 characters no spaces or special characters" required>
+    </div>
+    <p class="center-align">
+      <button type="submit" class="waves-effect waves-light btn"><i class="material-icons right">check</i>Confirm</button>
+    </p>
+  </form>
+</div>
+
+
+
+<h2 class="center-align"><span class="green-letter">C</span>hange <span class="green-letter">D</span>isplay <span class="green-letter">N</span>ame</h2>
+
+<div class="row black white-text">
+  <p>
+    <h3 class="center-align">Enter new display name below</h3>
+  </p>
+  <form action="/changeDisplayName" method="post">
+    <div class="col s12">
+      <input type="text" name="display_name" id="display_name" placeholder="Display Name" pattern="\w{3,30}" title="Between 3-30 characters no spaces or special characters" required>
+    </div>
+    <p class="center-align">
+      <button type="submit" class="waves-effect waves-light btn"><i class="material-icons right">check</i>Confirm</button>
+    </p>
+  </form>
+</div>

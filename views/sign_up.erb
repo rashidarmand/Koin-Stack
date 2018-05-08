@@ -1,13 +1,33 @@
+<h1 class="center-align"><span class="green-letter">S</span>ign Up</h1>
 
-<h1>Sign Up</h1>
-
-<form action="/sign-up" method="post">
-  <input type="text" name="first_name" id="first_name" placeholder="First Name">
-  <input type="text" name="last_name" id="last_name" placeholder="Last Name">
-  <input type="email" name="email" id="email" placeholder="Email">
-  <input type="date" name="birthday" id="birthday" placeholder="Birthday">
-  <input type="text" name="display_name" id="display_name" placeholder="Display Name" pattern="(\w|\d){3,30}" title="Between 3-30 characters no spaces or special characters" required>
-  <input type="text" name="username" id="username" placeholder="Username">
-  <input type="password" name="password" id="password" placeholder="Password">
-  <input type="submit" value="Go">
-</form>
+<div class="row black white-text">
+  <p>
+    <h3 class="center-align">Create your account below</h3>
+  </p>
+  <form action="/sign-up" method="post">
+    <div class="col s12">
+      <input type="text" name="first_name" id="first_name" placeholder="First Name" pattern="\w"  required>
+    </div>
+    <div class="col s12">
+      <input type="text" name="last_name" id="last_name" placeholder="Last Name" pattern="\w"  required>
+    </div>
+    <div class="col s12">
+      <input type="email" name="email" id="email" placeholder="Email" required>
+    </div>
+    <div class="col s12">
+      <input type="date" name="birthday" id="birthday" placeholder="Birthday" required>
+    </div>
+    <div class="col s12">
+      <input type="text" name="display_name" id="display_name" placeholder="Display Name" pattern="\w{3,30}" title="Between 3-30 characters no spaces or special characters" required>
+    </div>
+    <div class="col s12">
+      <input type="text" name="username" id="username" placeholder="Username" pattern="\w{3,30}" title="Between 3-30 characters no spaces or special characters" required>
+    </div>
+    <div class="col s12">
+      <input type="password" name="password" id="password" placeholder="Password" pattern="\w{3,30}" title="Between 3-30 characters no spaces or special characters" required>
+    </div>
+    <p class="center-align">
+      <button type="submit" class="waves-effect waves-light btn"><i class="material-icons right">send</i>Sign Up</button>
+    </p>
+  </form>
+</div>

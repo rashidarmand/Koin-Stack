@@ -13,3 +13,5 @@ closeButton.addEventListener("click", event => {
 window.setTimeout(() => {
   flashPanel.classList.add("hide")
 }, 3000);
+
+
