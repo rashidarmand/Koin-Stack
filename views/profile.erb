@@ -1,4 +1,4 @@
-<div class="black white-text center-align">
+<div class="black white-text center-align fadeInDown">
   <h1><strong>@<%= @profile.display_name %></strong></h1>
   <p>
     <ul>
@@ -16,7 +16,7 @@
     if @profile.posts.index(post) % 2 == 0
  %>
 
-  <div class="card horizontal">
+  <div class="card horizontal fadeInLeft">
       <div class="card-stacked black white-text">
         <div class="card-content">
           <div class="row">
@@ -62,7 +62,7 @@
 
 <% else %>
 
-  <div class="card horizontal">
+  <div class="card horizontal fadeInRight">
       <div class="card-stacked black white-text">
         <div class="card-content">
           <div class="row">

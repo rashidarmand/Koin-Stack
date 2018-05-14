@@ -1,11 +1,11 @@
-<h1 class="center-align"><span class="green-letter">F</span>eed</h1>
+<h1 class="center-align fadeInDown"><span class="green-letter">F</span>eed</h1>
 
 <%# Even numbered posts are styled differently than odd numbered posts  %>
 <% for post in @posts
     if @posts.index(post) % 2 == 0
  %>
 
-    <div class="card horizontal">
+    <div class="card horizontal fadeInLeft">
       <div class="card-stacked black white-text">
         <div class="card-content">
           <div class="row">
@@ -51,7 +51,7 @@
 
 <% else %>
 
-    <div class="card horizontal">
+    <div class="card horizontal fadeInRight">
       <div class="card-stacked black white-text">
         <div class="card-content">
           <div class="row">
