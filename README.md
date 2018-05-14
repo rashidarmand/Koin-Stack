@@ -14,12 +14,12 @@ Constructed a twitter-like social media website for cryptocurrency enthusiasts.
   * PostgreSQL (production)
 
 Desktop View:  
-<img src="github/Desktop_View.png" alt="mobile demo">
+<img src="github/desktop_view.png" alt="mobile demo">
 
 
 
 Mobile view:  
-<img src="github/Mobile_View.png" alt="mobile demo" width="350">  
+<img src="github/mobile_view.png" alt="mobile demo" width="350">  
 
 ### Current Features:
   * Search for post by hashtag (i.e. #bitcoin) or display name (i.e @testuser)
