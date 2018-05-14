@@ -11,7 +11,7 @@ set :sessions, true
 
 # this will ensure this will only be used locally
 configure :development do
-  set :database, "sqlite3:stonr.db"
+  set :database, "sqlite3:ks.db"
 end
 # this will ensure this will only be used on production
 configure :production do
