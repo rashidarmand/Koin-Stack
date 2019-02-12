@@ -1,6 +1,6 @@
 # Koin Stack
 
-Constructed a twitter-like social media website for cryptocurrency enthusiasts.
+Constructed a microblogging website for cryptocurrency enthusiasts.
 
 ### Technologies utilized:
   * HTML
